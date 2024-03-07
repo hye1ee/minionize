@@ -10,9 +10,11 @@ import {
 } from "@react-three/drei";
 import { Suspense, useEffect } from "react";
 import styled from "styled-components";
+import MinionsModel from "../assets/minions.glb";
+import MainBgm from "../assets/music/main_bgm.mp3";
 
 const Model = () => {
-  const { scene, animations } = useGLTF("/public/minions.glb");
+  const { scene, animations } = useGLTF(MinionsModel);
   const { actions } = useAnimations(animations, scene);
   useEffect(() => {
     Object.values(actions).forEach((action) => action?.play());
@@ -48,7 +50,7 @@ const Home = () => {
     <PageWrapper>
       <HomeTitle onClick={() => navigate("/mirror")}>Minionize</HomeTitle>
       <audio id="audio-main" autoPlay={true}>
-        <source src="/public/music/main_bgm.mp3" type="audio/mpeg" />
+        <source src={MainBgm} type="audio/mpeg" />
       </audio>
       <Canvas camera={{ fov: 55, near: 0.1, far: 1000, position: [2, 0, 0] }}>
         <color attach="background" args={["#151515"]} />

@@ -11,6 +11,7 @@ import MinionImg2 from "../assets/img/minion2.png";
 import MinionImg3 from "../assets/img/minion3.png";
 import MinionImg4 from "../assets/img/minion4.png";
 import ColorImg from "../assets/img/colortube.png";
+import MinionTemplate from "../assets/template.png";
 
 interface MaskGenProps {
   setMaskData: React.Dispatch<React.SetStateAction<string>>;
@@ -54,7 +55,7 @@ const MaskGen = (props: MaskGenProps) => {
     if (!context) return;
     // load image
     const template = new Image();
-    template.src = "src/assets/template.png";
+    template.src = MinionTemplate;
     template.onload = () => {
       context.drawImage(template, 0, 0, canvas.width, canvas.height);
     };

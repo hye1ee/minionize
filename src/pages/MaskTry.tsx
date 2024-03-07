@@ -6,6 +6,7 @@ import { PageWrapper } from "../components/PageWrapper";
 import styled from "styled-components";
 
 import WhiteFrameImg from "../assets/img/whiteframe.png";
+import MirrorBgm from "../assets/music/mirror_bgm.wav";
 
 interface MaskTryProps {
   maskData: string;
@@ -84,7 +85,7 @@ const MaskTry = (props: MaskTryProps) => {
   return (
     <PageWrapper style={{ backgroundColor: "#111111" }}>
       <audio id="audio-mirror" autoPlay={true}>
-        <source src="/public/music/mirror_bgm.wav" type="audio/wav" />
+        <source src={MirrorBgm} type="audio/wav" />
       </audio>
       <MaskRenderFrameContainer>
         <MaskRenderFrame src={WhiteFrameImg} />
