@@ -76,7 +76,7 @@ const MaskGen = (props: MaskGenProps) => {
     context.strokeStyle = color.hex;
   };
 
-  const onSizeChange = (event: Event, newValue: number | number[]) => {
+  const onSizeChange = (_: Event, newValue: number | number[]) => {
     setSize(newValue as number);
     if (!canvasRef || !canvasRef.current) return;
     const context = canvasRef.current.getContext(

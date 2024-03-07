@@ -10,6 +10,7 @@ import WhiteFrameImg from "../assets/img/whiteframe.png";
 interface MaskTryProps {
   maskData: string;
 }
+
 const MaskTry = (props: MaskTryProps) => {
   const [faceMesh, setFaceMesh] = useState<any>(null);
   const [mindar, setMindar] = useState<any>(null);
