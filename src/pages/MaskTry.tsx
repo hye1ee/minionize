@@ -5,28 +5,10 @@ import { useEffect, useState } from "react";
 import { PageWrapper } from "../components/PageWrapper";
 import styled from "styled-components";
 
-interface MaskGenProps {
-  setMaskData: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const MaskGen = (props: MaskGenProps) => {
-  return (
-    <PageWrapper>
-      This is generation page
-      <MaskGenCanvas id="mask-canvas" />
-    </PageWrapper>
-  );
-};
-const MaskGenCanvas = styled.canvas`
-  width: "400px";
-  height: "400px";
-  border: "1px solid black";
-`;
-
 interface MaskTryProps {
   maskData: string;
 }
-export const MaskTry = (props: MaskTryProps) => {
+const MaskTry = (props: MaskTryProps) => {
   const [faceMesh, setFaceMesh] = useState<any>(null);
   const [mindar, setMindar] = useState<any>(null);
 
@@ -70,9 +52,9 @@ export const MaskTry = (props: MaskTryProps) => {
 
     start();
 
+    // prevent memory leak
     return () => {
       if (mindar) {
-        console.log("stop");
         mindar.renderer.setAnimationLoop(null);
         mindar.stop();
       }
@@ -86,6 +68,8 @@ export const MaskTry = (props: MaskTryProps) => {
     </PageWrapper>
   );
 };
+
+export default MaskTry;
 
 const MaskRenderContainer = styled.div`
   width: 500px;

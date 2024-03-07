@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { PageWrapper } from "../components/PageWrapper";
-import { MaskGen, MaskTry } from "./Mask";
 import { useState } from "react";
-import MaskImg from "../assets/minions.png";
+import MaskGen from "./MaskGen";
+import MaskTry from "./MaskTry";
 
 const Mirror = () => {
   const navigate = useNavigate();
+  const [maskData, setMaskData] = useState<string>("");
   const [maskGen, setMaskGen] = useState<boolean>(true);
 
   return (
@@ -22,7 +23,11 @@ const Mirror = () => {
       >
         Mode Change
       </button>
-      {maskGen ? <MaskGen /> : <MaskTry maskData={MaskImg} />}
+      {maskGen ? (
+        <MaskGen setMaskData={setMaskData} />
+      ) : (
+        <MaskTry maskData={maskData} />
+      )}
     </PageWrapper>
   );
 };
