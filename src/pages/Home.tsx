@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { PageWrapper } from "../components/PageWrapper";
-import { useLoader } from "@react-three/fiber";
 import { Canvas } from "@react-three/fiber";
 import {
   Environment,
@@ -10,6 +9,7 @@ import {
   useGLTF,
 } from "@react-three/drei";
 import { Suspense, useEffect } from "react";
+import styled from "styled-components";
 
 const Model = () => {
   const { scene, animations } = useGLTF("src/assets/minions.glb");
@@ -46,7 +46,7 @@ const Home = () => {
 
   return (
     <PageWrapper>
-      Hello this is home
+      <HomeTitle onClick={() => navigate("/mirror")}>Minionize</HomeTitle>
       <audio id="audio-main" autoPlay={true}>
         <source src="src/assets/music/main_bgm.mp3" type="audio/mpeg" />
       </audio>
@@ -59,8 +59,30 @@ const Home = () => {
           <Environment preset="sunset" />
         </Suspense>
       </Canvas>
-      <button onClick={() => navigate("/mirror")} />
     </PageWrapper>
   );
 };
 export default Home;
+
+const HomeTitle = styled.div`
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+
+  font-size: 130px;
+  color: rgba(255, 255, 255, 0.1);
+  /* -webkit-text-stroke: 1px black; */
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 1s;
+  z-index: 100;
+
+  cursor: pointer;
+  &:hover {
+    font-size: 140px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+`;

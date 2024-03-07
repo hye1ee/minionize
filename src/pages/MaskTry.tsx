@@ -20,6 +20,22 @@ const MaskTry = (props: MaskTryProps) => {
     renderer.setAnimationLoop(() => {
       renderer.render(scene, camera);
     });
+
+    const audio = document.getElementById("audio-mirror") as HTMLAudioElement;
+    audio.play().catch(() => {
+      document.addEventListener(
+        "click",
+        () => {
+          audio.play();
+        },
+        { once: true }
+      );
+    });
+    setTimeout(() => {
+      console.log("timeout");
+      const overlay = document.getElementById("overlay") as HTMLDivElement;
+      overlay.style.backgroundColor = "rgba(0,0,0,0)";
+    }, 8000);
   };
 
   useEffect(() => {
@@ -66,9 +82,12 @@ const MaskTry = (props: MaskTryProps) => {
 
   return (
     <PageWrapper style={{ backgroundColor: "#111111" }}>
-      This is try page
+      <audio id="audio-mirror" autoPlay={true}>
+        <source src="src/assets/music/mirror_bgm.wav" type="audio/wav" />
+      </audio>
       <MaskRenderFrameContainer>
         <MaskRenderFrame src={WhiteFrameImg} />
+        <MaskRenderOverlay id="overlay" />
         <MaskRenderContainer id="mask-render" />
       </MaskRenderFrameContainer>
     </PageWrapper>
@@ -84,13 +103,27 @@ const MaskRenderContainer = styled.div`
   position: relative;
 `;
 
+const MaskRenderOverlay = styled.div`
+  width: 800px;
+  height: 700px;
+
+  background-color: rgba(0, 0, 0, 1);
+  transition: all 1s;
+  position: absolute;
+  z-index: 10;
+`;
+
 const MaskRenderFrameContainer = styled.div`
   width: 1000px;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const MaskRenderFrame = styled.img`
