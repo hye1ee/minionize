@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { PageWrapper } from "../components/PageWrapper";
 import { useState } from "react";
 import MaskGen from "./MaskGen";
