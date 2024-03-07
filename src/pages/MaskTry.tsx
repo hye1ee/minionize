@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { PageWrapper } from "../components/PageWrapper";
 import styled from "styled-components";
 
+import WhiteFrameImg from "../assets/img/whiteframe.png";
+
 interface MaskTryProps {
   maskData: string;
 }
@@ -33,8 +35,9 @@ const MaskTry = (props: MaskTryProps) => {
     if (!mindar) return;
 
     const { scene } = mindar;
-    const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
-    scene.add(light);
+    const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 1);
+    const ambientlight = new THREE.AmbientLight(0xffffff);
+    scene.add(light, ambientlight);
 
     const newFaceMesh = mindar.addFaceMesh();
     setFaceMesh(newFaceMesh);
@@ -62,9 +65,12 @@ const MaskTry = (props: MaskTryProps) => {
   }, [faceMesh]);
 
   return (
-    <PageWrapper>
+    <PageWrapper style={{ backgroundColor: "#111111" }}>
       This is try page
-      <MaskRenderContainer id="mask-render" />
+      <MaskRenderFrameContainer>
+        <MaskRenderFrame src={WhiteFrameImg} />
+        <MaskRenderContainer id="mask-render" />
+      </MaskRenderFrameContainer>
     </PageWrapper>
   );
 };
@@ -72,8 +78,28 @@ const MaskTry = (props: MaskTryProps) => {
 export default MaskTry;
 
 const MaskRenderContainer = styled.div`
-  width: 500px;
-  height: auto;
+  width: 700px;
+  height: 700px;
 
   position: relative;
+`;
+
+const MaskRenderFrameContainer = styled.div`
+  width: 1000px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const MaskRenderFrame = styled.img`
+  width: 100%;
+  object-fit: cover;
+  z-index: 100;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 `;

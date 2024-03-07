@@ -13,13 +13,13 @@ const Mirror = () => {
     <PageWrapper>
       <button
         onClick={() => navigate("/")}
-        style={{ position: "absolute", right: 0 }}
+        style={{ position: "absolute", right: 0, zIndex: 100 }}
       >
         Home
       </button>
       <button
         onClick={() => setMaskGen((val) => !val)}
-        style={{ position: "absolute", right: 0, top: "30px" }}
+        style={{ position: "absolute", right: 0, top: "30px", zIndex: 100 }}
       >
         Mode Change
       </button>
