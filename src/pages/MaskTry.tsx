@@ -84,7 +84,7 @@ const MaskTry = (props: MaskTryProps) => {
   return (
     <PageWrapper style={{ backgroundColor: "#111111" }}>
       <audio id="audio-mirror" autoPlay={true}>
-        <source src="src/assets/music/mirror_bgm.wav" type="audio/wav" />
+        <source src="/public/music/mirror_bgm.wav" type="audio/wav" />
       </audio>
       <MaskRenderFrameContainer>
         <MaskRenderFrame src={WhiteFrameImg} />
