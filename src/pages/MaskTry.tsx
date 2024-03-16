@@ -37,6 +37,7 @@ const MaskTry = (props: MaskTryProps) => {
       console.log("timeout");
       const overlay = document.getElementById("overlay") as HTMLDivElement;
       overlay.style.backgroundColor = "rgba(0,0,0,0)";
+      overlay.style.color = "rgba(0,0,0,0)";
     }, 8000);
   };
 
@@ -89,7 +90,11 @@ const MaskTry = (props: MaskTryProps) => {
       </audio>
       <MaskRenderFrameContainer>
         <MaskRenderFrame src={WhiteFrameImg} />
-        <MaskRenderOverlay id="overlay" />
+        <MaskRenderOverlay id="overlay">
+          {
+            "Enjoy the mirror room just for you.\nFocus on the things beyond what you see."
+          }
+        </MaskRenderOverlay>
         <MaskRenderContainer id="mask-render" />
       </MaskRenderFrameContainer>
     </PageWrapper>
@@ -113,6 +118,13 @@ const MaskRenderOverlay = styled.div`
   transition: all 1s;
   position: absolute;
   z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: break-spaces;
+  color: rgba(255, 255, 255, 0.7);
 `;
 
 const MaskRenderFrameContainer = styled.div`

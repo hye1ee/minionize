@@ -40,8 +40,8 @@ const ButtonTitle = styled.div`
   font-style: normal;
 
   font-size: 80px;
-  color: rgba(255, 255, 255, 0.2);
-  /* -webkit-text-stroke: 1px black; */
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.4);
 
   position: absolute;
   top: 20px;
@@ -51,6 +51,6 @@ const ButtonTitle = styled.div`
 
   cursor: pointer;
   &:hover {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.8);
   }
 `;

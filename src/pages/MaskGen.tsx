@@ -88,6 +88,11 @@ const MaskGen = (props: MaskGenProps) => {
 
   return (
     <PageWrapper style={{ backgroundColor: "#F5F5F5" }}>
+      <MaskGenDescription>
+        {
+          "Express yourself as own Minion mask, it doesn't need to be look like typical Minion.\nIf you are ready click the Enter button."
+        }
+      </MaskGenDescription>
       {/* <div>
         <Slider
           value={size}
@@ -128,7 +133,7 @@ const MaskGen = (props: MaskGenProps) => {
         </MaskGenFrameWrapper>
         <MaskGenButtonContainer onClick={() => setShowColor((val) => !val)}>
           <MaskGenImg src={ColorImg} style={{ cursor: "pointer" }} />
-          <div style={{ fontSize: "20px", transform: "rotate(5deg)" }}>
+          <div style={{ fontSize: "16px", transform: "rotate(5deg)" }}>
             Click Here!
           </div>
         </MaskGenButtonContainer>
@@ -166,6 +171,17 @@ const MaskGen = (props: MaskGenProps) => {
 };
 
 export default MaskGen;
+
+const MaskGenDescription = styled.div`
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  white-space: break-spaces;
+  text-align: center;
+`;
 
 const MaskGenColWrapper = styled.div`
   height: 100%;
